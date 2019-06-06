@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import {loginUser} from '../actions/userActions';
 
 
 
@@ -10,9 +13,10 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.handleSubmit(formData);
+    props.loginUser(formData);
+    // props.handleSubmit(formData);
   }
-
+  // debugger;
   return (
     <div id="login">
       LOGIN PAGE!
@@ -25,4 +29,13 @@ const Login = (props) => {
   )
 }
 
-export default Login
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: userData => dispatch(loginUser(userData))
+  };
+}
+
+// export default connect(null, (dispatch) => {
+//   return {loginUser};
+// })(Login)
+export default connect(null, mapDispatchToProps)(Login)
