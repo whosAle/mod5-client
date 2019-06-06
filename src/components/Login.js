@@ -14,6 +14,7 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.loginUser(formData);
+    setFormData({username: "", password: ""});
     // props.handleSubmit(formData);
   }
   // debugger;
