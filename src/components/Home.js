@@ -12,7 +12,6 @@ const displayActionButtons = () => {
 
 
 const Home = () => {
-  // Declare a new state variable, which we'll call "typing"
   const [typing, setTyping] = useState(true);
 
   return (
