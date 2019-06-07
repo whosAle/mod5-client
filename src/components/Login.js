@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+// import { withRouter } from 'react-router-dom';
+
 
 import {loginUser} from '../actions/userActions';
 
@@ -15,6 +17,7 @@ const Login = (props) => {
     e.preventDefault();
     props.loginUser(formData);
     setFormData({username: "", password: ""});
+    props.history.push("/")
     // props.handleSubmit(formData);
   }
   // debugger;
@@ -40,3 +43,4 @@ const mapDispatchToProps = (dispatch) => {
 //   return {loginUser};
 // })(Login)
 export default connect(null, mapDispatchToProps)(Login)
+// export default connect(null, mapDispatchToProps)(withRouter(Login))
