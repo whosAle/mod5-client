@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
+// import { withRouter } from "react-router";
+
 
 import logo from './logo.svg';
 import './App.css';
@@ -11,7 +13,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import About from './components/About';
 
-function App() {
+function App(props) {
 
   const onLogin = (formData) => {
     fetch()
@@ -26,20 +28,20 @@ function App() {
       .then(resp => resp.json())
       .then(console.log)
   }
+  console.log(props);
+  // const { match, location, history } = .props;
 
   return (
     <div className="App">
-      <Router>
-        <NavBar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/login" component={Login} handleSubmit={onLogin}/>
-        </Switch>
-      </Router>
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/login" component={Login} handleSubmit={onLogin}/>
+      </Switch>
     </div>
 
   );
 }
 
-export default App;
+export default withRouter(App);
