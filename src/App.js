@@ -12,6 +12,7 @@ import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Login from './components/Login';
 import About from './components/About';
+import Signup from './components/Signup';
 
 const backendEndpoint = "http://localhost:3000/api/v1/graphql"
 const currentUserEndpoint = "http://localhost:3000/api/v1/current_user";
@@ -54,6 +55,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/login" component={Login}/>
+          <Route exact path="/signup" component={Signup}/>
         </Switch>
       </div>
 

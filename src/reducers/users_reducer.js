@@ -8,7 +8,8 @@ export default function usersReducer(state={}, action) {
       // debugger;
       console.log("user is logging in.....", action.payload);
       return action.payload;
-      break;
+    case "LOADING_SIGNUP":
+      return {...state, loading: true};
     default:
       return state;
   }
