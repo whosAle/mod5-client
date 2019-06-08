@@ -17,7 +17,7 @@ const Login = (props) => {
     e.preventDefault();
     props.loginUser(formData);
     setFormData({username: "", password: ""});
-    props.history.push("/")
+    props.history.push("/");
     // props.handleSubmit(formData);
   }
   // debugger;

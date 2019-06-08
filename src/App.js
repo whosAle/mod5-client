@@ -100,4 +100,5 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(withRouter(App));
+export default connect(mapStateToProps)(App);
+// export default connect(mapStateToProps)(withRouter(App));
