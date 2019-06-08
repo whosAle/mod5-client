@@ -12,7 +12,7 @@ export default function usersReducer(state={}, action) {
       return {...state, loading: true};
     case "LOGOUT":
       console.log("logging out!");
-      localStorage.setItem("token", null);
+      localStorage.setItem("token", "");
       return {};
     default:
       return state;

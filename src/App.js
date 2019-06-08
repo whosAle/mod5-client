@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 // import { withRouter } from "react-router";
 
 
@@ -46,7 +48,8 @@ class App extends Component {
   }
 
   render(){
-    console.log(this.props);
+    console.log("app props",this.props);
+    console.log("app state",this.state);
     return (
       <div className="App">
         <NavBar />
@@ -91,4 +94,10 @@ class App extends Component {
 //   );
 // }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(withRouter(App));
