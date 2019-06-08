@@ -27,7 +27,6 @@ class App extends Component {
     console.log('token is', token);
     if(token) {
 
-      const query =
       fetch(currentUserEndpoint, {
         headers: {
           Authorization: token

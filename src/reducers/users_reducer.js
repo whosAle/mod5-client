@@ -10,6 +10,10 @@ export default function usersReducer(state={}, action) {
       return action.payload;
     case "LOADING_SIGNUP":
       return {...state, loading: true};
+    case "LOGOUT":
+      console.log("logging out!");
+      localStorage.setItem("token", null);
+      return {};
     default:
       return state;
   }

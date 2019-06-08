@@ -2,7 +2,6 @@ const LOGIN_ENDPOINT = "http://localhost:3000/api/v1/login";
 const SIGNUP_ENDPOINT = "http://localhost:3000/api/v1/users";
 
 export const loginUser = (user) => {
-  // debugger;
   return dispatch => {
     dispatch({ type: "LOADING_LOGIN" });
     return fetch(LOGIN_ENDPOINT,
@@ -11,7 +10,7 @@ export const loginUser = (user) => {
       headers:{
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify( user ) // data can be `string` or {object}!
+      body: JSON.stringify( user )
     })
       .then(resp => resp.json())
       .then(data => {
@@ -24,7 +23,6 @@ export const loginUser = (user) => {
 }
 
 export const signUpUser = (user) => {
-  // debugger;
   return dispatch => {
     dispatch({ type: "LOADING_SIGNUP" });
     return fetch(SIGNUP_ENDPOINT,
@@ -33,7 +31,7 @@ export const signUpUser = (user) => {
       headers:{
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify( user ) // data can be `string` or {object}!
+      body: JSON.stringify( user )
     })
       .then(resp => resp.json())
       .then(data => {
@@ -44,3 +42,5 @@ export const signUpUser = (user) => {
       })
   }
 }
+
+export const logOutUser = () => ({type: "LOGOUT"});
