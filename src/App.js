@@ -17,7 +17,6 @@ import About from './components/About';
 import Signup from './components/Signup';
 import Explore from './components/Explore';
 
-const backendEndpoint = "http://localhost:3000/api/v1/graphql"
 const currentUserEndpoint = "http://localhost:3000/api/v1/current_user";
 
 class App extends Component {
