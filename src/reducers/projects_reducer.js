@@ -13,7 +13,7 @@ export default function usersReducer(state=[], action) {
       return action.payload;
     case "TAKE_PROJECT":
       console.log("taking on a project", action.payload);
-      debugger;
+      // debugger;
       // const project = state.find(proj => proj.id === action.payload.id);
       // project.inprogress = true
       // project.doer_id = action.payload.doer_id

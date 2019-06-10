@@ -15,8 +15,13 @@ const Project = (props) => {
       <p>{project.description}</p>
       <p>Category: {project.category}</p>
       <p>Capital: {project.base_capital}</p>
-      <p>Status: {project.inprogress ? "In Progress": "Available"}</p>
-      <a onClick={() => props.takeProject(project.id, props.user.id)}>Take On Project!</a>
+      {project.completed ? <p>Status: Completed!</p> :
+        project.inprogress ? <p>Status: In Progress</p> :
+        <>
+        <p>Status: Available</p>
+        <a onClick={() => props.takeProject(project.id, props.user.id)}>Take On Project!</a>
+        </>
+      }
     </div>
   );
 }
