@@ -30,6 +30,23 @@ const Explore = (props) => {
     }
   }
 
+  const sortProjects = () => {
+    // props.projects.filter(proj => proj.)
+    console.log("SORT QUERY", sortQuery);
+    switch (sortQuery) {
+      case "completed":
+        return props.projects.filter(proj => proj.completed);
+      case "in progress":
+        return props.projects.filter(proj => proj.inprogress);
+      case "available":
+        return props.projects.filter(proj => !proj.inprogress);
+      default:
+        return props.projects;
+    }
+  }
+
+
+
   return (
     <div>
       <h1>See All Projects </h1>
