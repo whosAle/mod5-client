@@ -9,6 +9,7 @@ export default function usersReducer(state=[], action) {
       console.log("loading projects");
       return state;
     case "FETCH_PROJECTS":
+      // debugger;
       return [action.payload, ...state];
     default:
       return state;

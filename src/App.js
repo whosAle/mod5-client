@@ -17,6 +17,8 @@ import About from './components/About';
 import Signup from './components/Signup';
 import Explore from './components/Explore';
 
+import {fetchProjects} from './actions/projectActions'
+
 const currentUserEndpoint = "http://localhost:3000/api/v1/current_user";
 
 class App extends Component {
@@ -45,6 +47,8 @@ class App extends Component {
       })
 
     }
+
+    this.props.fetchProjects();
   }
 
   render(){
@@ -55,7 +59,7 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/explore" component={Explore} />
+          <Route exact path="/explore" render={() => <Explore projects={this.props.projects}/>} />
           <Route exact path="/about" component={About} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/signup" component={Signup}/>
@@ -97,9 +101,10 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    projects: state.projects
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {fetchProjects} )(App);
 // export default connect(mapStateToProps)(withRouter(App));

@@ -1,9 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import ProjectList from './ProjectList';
+
+
 
 const Explore = (props) => {
+  console.log("explore props:", props);
+
   return (
-    <h1>See All Projects </h1>
+    <div>
+      <h1>See All Projects </h1>
+      <ProjectList projects={props.projects}/>
+    </div>
   );
 }
 
-export default Explore
+export default connect(state => ({projects: state.projects}))(Explore)
