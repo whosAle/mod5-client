@@ -10,7 +10,7 @@ export default function usersReducer(state=[], action) {
       return state;
     case "FETCH_PROJECTS":
       // debugger;
-      return [action.payload, ...state];
+      return action.payload;
     default:
       return state;
   }
