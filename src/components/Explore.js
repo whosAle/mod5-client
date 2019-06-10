@@ -7,7 +7,6 @@ import ProjectList from './ProjectList';
 
 const Explore = (props) => {
   console.log("explore props:", props);
-  debugger;
   return (
     <div>
       <h1>See All Projects </h1>

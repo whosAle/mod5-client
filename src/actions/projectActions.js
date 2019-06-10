@@ -51,3 +51,49 @@ export const fetchProjects = () => {
       })
   }
 }
+
+export const takeProject = (project_id, doer_id) => {
+  const query = `
+  mutation {
+    takeProject(id:${project_id}, doer_id: ${doer_id}) {
+      id
+      title
+      description
+    }
+  }
+  `
+  // return dispatch => {
+  //   // dispatch({ type: "LOADING_SIGNUP" });
+  //   return fetch(backendEndpoint,
+  //   {
+  //     method: 'POST',
+  //     headers:{
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify( {query} )
+  //   })
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       // const { token, user } = data.data;
+  //       console.log("DATATA", data);
+  //       dispatch( {type: "TAKE_PROJECT", payload: data.data} );
+  //     })
+  // }
+  return dispatch => {
+    // dispatch({ type: "LOADING_SIGNUP" });
+    return fetch(projectsEndpoint+`/`+project_id,
+    {
+      method: 'PATCH',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify( {id: project_id, doer_id: doer_id} )
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        // const { token, user } = data.data;
+        console.log("DATATA", data);
+        dispatch( {type: "TAKE_PROJECT", payload: data} );
+      })
+  }
+}
