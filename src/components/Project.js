@@ -5,25 +5,48 @@ import {takeProject} from '../actions/projectActions';
 
 
 const Project = (props) => {
-  const { project } = props;
+  const { project, user } = props;
   console.log("pROJECT:", props);
 
-  return (
-    <div>
-      <h3>project {project.title}</h3>
-      <h4>Posted By: {project.user_id}</h4>
-      <p>{project.description}</p>
-      <p>Category: {project.category}</p>
-      <p>Capital: {project.base_capital}</p>
-      {project.completed ? <p>Status: Completed!</p> :
-        project.inprogress ? <p>Status: In Progress</p> :
-        <>
-        <p>Status: Available</p>
-        <a onClick={() => props.takeProject(project.id, props.user.id)}>Take On Project!</a>
-        </>
-      }
-    </div>
-  );
+  const handleTakeProject = (event) => {
+
+  }
+  if (user.id === project.user_id) {
+
+    return (
+      <div>
+        <h3>project {project.title}</h3>
+        <h4>Posted By: {project.user_id}</h4>
+        <p>{project.description}</p>
+        <p>Category: {project.category}</p>
+        <p>Capital: {project.base_capital}</p>
+        {project.completed ? <p>Status: Completed!</p> :
+          project.inprogress ? <p>Status: In Progress</p> :
+          <>
+          <p>Status: Available</p>
+          <a onClick={() => props.takeProject(project.id, user.id)}>Take On Project!</a>
+          </>
+        }
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h3>project {project.title}</h3>
+        <h4>Posted By: {project.user_id}</h4>
+        <p>{project.description}</p>
+        <p>Category: {project.category}</p>
+        <p>Capital: {project.base_capital}</p>
+        {project.completed ? <p>Status: Completed!</p> :
+          project.inprogress ? <p>Status: In Progress</p> :
+          <>
+          <p>Status: Available</p>
+          <a>See Admin Details</a>
+          </>
+        }
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {

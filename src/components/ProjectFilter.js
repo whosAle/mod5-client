@@ -14,12 +14,12 @@ const ProjectFilter = (props) => {
   }
 
   return (
-    <div className="column sixteen wide" id="bot-form">
+    <div className="" id="">
       <h1>PROJECT FILTER</h1>
-      <form className="ui form" onSubmit={handleSubmit}>
+      <form className="" onSubmit={handleSubmit}>
 
-        <label name="filter"/> Filter By:
-        <select name="filter">
+        <label name=""/> Filter By:
+        <select name="">
           <option>All</option>
           <option>Capital H-L</option>
           <option>Capital L-H</option>
