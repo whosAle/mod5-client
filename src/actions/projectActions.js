@@ -80,7 +80,6 @@ export const takeProject = (project_id, doer_id) => {
   //     })
   // }
   return dispatch => {
-    // dispatch({ type: "LOADING_SIGNUP" });
     return fetch(projectsEndpoint+`/`+project_id,
     {
       method: 'PATCH',
