@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {takeProject, completeProject} from '../actions/projectActions';
 
 // TODO: MAKE A SEPARATE CARD/COMPONENT FOR CURRENT USER PROJECTS VS NON
+// TODO: there is abug that if there is a doer_id it will still allow you to take the project / overide the d_id
 const Project = (props) => {
   const { project, currentUser } = props;
   console.log("pROJECT:", props);
