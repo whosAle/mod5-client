@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 
 import {takeProject} from '../actions/projectActions';
 
-
+// TODO: MAKE A SEPARATE CARD/COMPONENT FOR CURRENT USER PROJECTS VS NON
 const Project = (props) => {
   const { project, user } = props;
   console.log("pROJECT:", props);
 
-  const handleTakeProject = (event) => {
-
-  }
   if (user.id === project.user_id) {
 
     return (
