@@ -5,14 +5,15 @@ import TypeWriter from 'react-typewriter';
 import '../css/home.css';
 
 const displayActionButtons = () => {
-  // return [<button>Add A Project</button>, <button>Explore</button>];
-  return [<Link to="/projects/new">Add A Project</Link>,
-  <Link to="/explore">Explore</Link>];
+  return (
+    <>
+    <Link to="/projects/new">Add A Project</Link>
+    <Link to="/explore">Explore</Link>
+    </>);
 }
 
 
 const Home = () => {
-  // Declare a new state variable, which we'll call "typing"
   const [typing, setTyping] = useState(true);
 
   return (
@@ -21,7 +22,6 @@ const Home = () => {
         <TypeWriter typing={1} onTypingEnd={() => setTyping(false)}> What if you could get paid to do good? </TypeWriter>
       </div>
       {typing ? null : displayActionButtons()}
-
 
     </div>
   )
