@@ -96,3 +96,19 @@ export const takeProject = (project_id, doer_id) => {
       })
   }
 }
+
+export const completeProject = (id) => {
+  return (dispatch) => {
+    return fetch(projectsEndpoint+"/complete",{
+      method: 'PATCH',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({project_id: id})
+    })
+      .then(resp => resp.json())
+      .then((data) => {
+        dispatch( {type: "COMPLETE_PROJECT", payload: data} );
+      })
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import {takeProject} from '../actions/projectActions';
+import {takeProject, completeProject} from '../actions/projectActions';
 
 // TODO: MAKE A SEPARATE CARD/COMPONENT FOR CURRENT USER PROJECTS VS NON
 const Project = (props) => {
@@ -38,7 +38,7 @@ const Project = (props) => {
             <>
             <p>Status: In Progress</p>
             {currentUser.id === project.doer_id ?
-            <button>Finish Project!</button>
+            <button onClick={() => props.completeProject(project.id)}>Finish Project!</button>
             : null}
             </>
           :
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, {takeProject})(Project)
+export default connect(mapStateToProps, { takeProject, completeProject })(Project)
 
 
 // t.integer "user_id"
