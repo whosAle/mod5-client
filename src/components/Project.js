@@ -5,10 +5,10 @@ import {takeProject} from '../actions/projectActions';
 
 // TODO: MAKE A SEPARATE CARD/COMPONENT FOR CURRENT USER PROJECTS VS NON
 const Project = (props) => {
-  const { project, user } = props;
+  const { project, currentUser } = props;
   console.log("pROJECT:", props);
 
-  if (user.id === project.user_id) {
+  if (currentUser.id === project.user_id) {
       return (
         <div>
           <h3>project {project.title}</h3>
@@ -34,10 +34,17 @@ const Project = (props) => {
         <p>Category: {project.category}</p>
         <p>Capital: {project.base_capital}</p>
         {project.completed ? <p>Status: Completed!</p> :
-          project.inprogress ? <p>Status: In Progress</p> :
+          project.inprogress ?
+            <>
+            <p>Status: In Progress</p>
+            {currentUser.id === project.doer_id ?
+            <button>Finish Project!</button>
+            : null}
+            </>
+          :
           <>
           <p>Status: Available</p>
-          <a onClick={() => props.takeProject(project.id, user.id)}>Take On Project!</a>
+          <a onClick={() => props.takeProject(project.id, currentUser.id)}>Take On Project!</a>
           </>
         }
       </div>
@@ -48,7 +55,7 @@ const Project = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    currentUser: state.user
   };
 }
 
