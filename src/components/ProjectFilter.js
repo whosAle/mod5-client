@@ -19,7 +19,7 @@ const ProjectFilter = (props) => {
       <form className="" onSubmit={handleSubmit}>
 
         <label name=""/> Filter By:
-        <select name="">
+        <select name="" style={{width:"100%"}}>
           <option>All</option>
           <option>Capital H-L</option>
           <option>Capital L-H</option>
@@ -28,15 +28,13 @@ const ProjectFilter = (props) => {
         </select>
 
         <label name="completion"/> Completion Filter:
-        <select name="filter" onChange={handleCompletionFilter}>
+        <select name="filter" onChange={handleCompletionFilter} style={{width:"100%"}}>
           <option>All</option>
           <option>completed</option>
           <option>in progress</option>
           <option>available</option>
         </select>
 
-        <br/>
-        <input type="submit"/>
       </form>
     </div>
   );
