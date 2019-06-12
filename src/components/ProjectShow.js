@@ -4,6 +4,7 @@ import ProjectList from './ProjectList';
 
 const Profile = (props) => {
   console.log("profile", props);
+  const { project } = props.project;
 
   return (
     <div>

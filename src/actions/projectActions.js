@@ -113,6 +113,7 @@ export const createProject = (projectData) => {
       })
   }
 }
+
 export const completeProject = (id) => {
   return (dispatch) => {
     return fetch(PROJECTS_ENDPOINT+"/complete",{
