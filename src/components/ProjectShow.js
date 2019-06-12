@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 
-import ProjectList from './ProjectList';
-
-const Profile = (props) => {
+const ProjectShow = (props) => {
   console.log("profile", props);
   const { project } = props.project;
 
   return (
     <div>
-      <h1>USER PROFILE PAGE</h1>
-      <h2>Capital</h2>
-      <p>{props.user.capital}</p>
-      <h2>Current User Projects</h2>
-      <ProjectList projects={props.currentProjects}/>
+      <h2>{project.Title}</h2>
+      <div id="project-deets">
+        <span>Category: {project.category}</span>
+        <span>Capital: {project.capital}</span>
+        <span>Status: {project.completed ? "Completed" :
+          project.inprogress ? "In Progress" : "Available"}</span>
+      </div>
+      <p>Location: {project.location}</p>
+      <p>{project.description}</p>
+
+      <p>Posted By: {project.user.id}</p>
+      <button>Back</button>
+      <button>{project.doer_id ? "Complete Project" : "Take On Project"}</button>
 
     </div>
 
@@ -20,4 +26,4 @@ const Profile = (props) => {
 
 }
 
-export default Profile
+export default ProjectShow

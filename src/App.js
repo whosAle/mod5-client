@@ -18,6 +18,7 @@ import Profile from './components/Profile';
 import Signup from './components/Signup';
 import Explore from './components/Explore';
 import ProjectForm from './components/ProjectForm';
+import ProjectShow from './components/ProjectShow';
 
 import {fetchProjects} from './actions/projectActions'
 import {autoLogin} from './actions/userActions'
@@ -76,6 +77,7 @@ class App extends Component {
           <Route exact path="/profile" render={() => <Profile user={this.props.currentUser} currentProjects={this.workingProjects()}/>} />
           <Route exact path="/about" component={About} />
           <Route exact path="/projects/new" render={() => <ProjectForm user={this.props.currentUser}/>} />
+          <Route path="/projects/:id" render={() => <ProjectShow project={this.props.projects.find(proj => proj.id === this.props.match.params.id)}/>} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/signup" component={Signup}/>
         </Switch>
