@@ -41,7 +41,7 @@ export const fetchProjects = () => {
   //       // dispatch( {type: "FETCH_PROJECTS", payload: projects} );
   //     })
   // }
-    dispatch({ type: "LOADING_LOGIN" });
+    // dispatch({ type: "LOADING_LOGIN" });
     return fetch(PROJECTS_ENDPOINT)
       .then(resp => resp.json())
       .then(data => {
@@ -110,6 +110,9 @@ export const createProject = (projectData) => {
       .then(resp => resp.json())
       .then(data => {
         dispatch( {type: "ADD_PROJECT", payload: data} );
+      })
+  }
+}
 
 export const completeProject = (id) => {
   return (dispatch) => {

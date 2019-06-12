@@ -9,7 +9,7 @@ const ProjectFilter = (props) => {
   }
 
   const handleCompletionFilter = (event) =>{
-    debugger;
+    // debugger;
     props.onFilterClick(event.target.value);
   }
 
