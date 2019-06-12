@@ -16,6 +16,7 @@ import Login from './components/Login';
 import About from './components/About';
 import Signup from './components/Signup';
 import Explore from './components/Explore';
+import ProjectForm from './components/ProjectForm';
 
 import {fetchProjects} from './actions/projectActions'
 
@@ -61,6 +62,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/explore" render={() => <Explore projects={this.props.projects}/>} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/projects/new" render={() => <ProjectForm user={this.props.currentUser}/>} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/signup" component={Signup}/>
         </Switch>
@@ -101,7 +103,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
+    currentUser: state.user,
     projects: state.projects
   }
 }
