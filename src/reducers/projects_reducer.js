@@ -1,5 +1,6 @@
 
 export default function usersReducer(state=[], action) {
+  let newState;
   switch (action.type) {
     case "ADD_PROJECT":
       console.log("adding project....", action.payload);
@@ -19,7 +20,10 @@ export default function usersReducer(state=[], action) {
       // project.inprogress = true
       // project.doer_id = action.payload.doer_id
       // project = {...project, inprogress: true, doer_id: action.payload.doer_id}
-      const newState = state.map(proj => proj.id === action.payload.id ? action.payload : proj)
+      newState = state.map(proj => proj.id === action.payload.id ? action.payload : proj)
+      return newState;
+    case "COMPLETE_PROJECT":
+      newState = state.map(proj => proj.id === action.payload.id ? action.payload : proj)
       return newState;
     default:
       return state;

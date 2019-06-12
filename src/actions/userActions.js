@@ -21,6 +21,8 @@ export const loginUser = (user) => {
   }
 }
 
+export const autoLogin = (user) => ({type: "LOGIN_USER", payload: user});
+
 export const signUpUser = (user) => {
   return dispatch => {
     dispatch({ type: "LOADING_SIGNUP" });
