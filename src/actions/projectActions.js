@@ -1,5 +1,5 @@
 const backendEndpoint = "http://localhost:3000/api/v1/graphql";
-const projectsEndpoint = "http://localhost:3000/api/v1/projects";
+const PROJECTS_ENDPOINT = "http://localhost:3000/api/v1/projects";
 
 export const fetchProjects = () => {
   return dispatch => {
@@ -42,7 +42,7 @@ export const fetchProjects = () => {
   //     })
   // }
     dispatch({ type: "LOADING_LOGIN" });
-    return fetch(projectsEndpoint)
+    return fetch(PROJECTS_ENDPOINT)
       .then(resp => resp.json())
       .then(data => {
         console.log("project fetcj data:", data);
@@ -80,7 +80,7 @@ export const takeProject = (project_id, doer_id) => {
   //     })
   // }
   return dispatch => {
-    return fetch(projectsEndpoint+`/`+project_id,
+    return fetch(PROJECTS_ENDPOINT+`/`+project_id,
     {
       method: 'PATCH',
       headers:{
@@ -97,9 +97,23 @@ export const takeProject = (project_id, doer_id) => {
   }
 }
 
+export const createProject = (projectData) => {
+  return dispatch => {
+    return fetch(PROJECTS_ENDPOINT,
+    {
+      method: 'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify( projectData )
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        dispatch( {type: "ADD_PROJECT", payload: data} );
+
 export const completeProject = (id) => {
   return (dispatch) => {
-    return fetch(projectsEndpoint+"/complete",{
+    return fetch(PROJECTS_ENDPOINT+"/complete",{
       method: 'PATCH',
       headers:{
         'Content-Type': 'application/json'

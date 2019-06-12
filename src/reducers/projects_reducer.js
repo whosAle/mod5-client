@@ -3,6 +3,7 @@ export default function usersReducer(state=[], action) {
   let newState;
   switch (action.type) {
     case "ADD_PROJECT":
+      console.log("adding project....", action.payload);
       return [...state, action.payload];
     case "REMOVE_PROJECT":
       return state.filter(proj => proj.id !== action.payload);
