@@ -23,8 +23,10 @@ function NavBar(props) {
         <NavLink to="/signup" exact>Sign Up</NavLink>
         </>
         :
+        <>
         <NavLink to="/" onClick={() => props.logOutUser()}>LogOut</NavLink>
-
+        <NavLink to="/profile" exact>Profile</NavLink>
+        </>
         }
 {/*        <a href="#" className="">The Good Economy Project</a>
         <ul id="" className="">

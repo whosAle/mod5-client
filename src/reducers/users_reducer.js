@@ -4,8 +4,7 @@ export default function usersReducer(state={}, action) {
     case "LOADING_LOGIN":
       return {...state, loading: true};
     case "LOGIN_USER":
-      // return {loading: false, pictures: action.payload};
-      // debugger;
+      debugger;
       console.log("user is logging in.....", action.payload);
       return action.payload;
     case "LOADING_SIGNUP":

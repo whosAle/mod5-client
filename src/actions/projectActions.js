@@ -80,7 +80,6 @@ export const takeProject = (project_id, doer_id) => {
   //     })
   // }
   return dispatch => {
-    // dispatch({ type: "LOADING_SIGNUP" });
     return fetch(projectsEndpoint+`/`+project_id,
     {
       method: 'PATCH',
@@ -94,6 +93,22 @@ export const takeProject = (project_id, doer_id) => {
         // const { token, user } = data.data;
         console.log("DATATA", data);
         dispatch( {type: "TAKE_PROJECT", payload: data} );
+      })
+  }
+}
+
+export const completeProject = (id) => {
+  return (dispatch) => {
+    return fetch(projectsEndpoint+"/complete",{
+      method: 'PATCH',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({project_id: id})
+    })
+      .then(resp => resp.json())
+      .then((data) => {
+        dispatch( {type: "COMPLETE_PROJECT", payload: data} );
       })
   }
 }
