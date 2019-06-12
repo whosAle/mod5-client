@@ -18,7 +18,6 @@ const Login = (props) => {
     props.loginUser(formData);
     setFormData({username: "", password: ""});
     props.history.push("/");
-    // props.handleSubmit(formData);
   }
   // debugger;
   return (

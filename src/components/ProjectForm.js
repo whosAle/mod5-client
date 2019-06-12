@@ -15,7 +15,7 @@ const ProjectForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.createProject(formData);
-    // setFormData({title: "", location: "", description: "", base_capital: "", category: ""});
+    setFormData({title: "", location: "", description: "", base_capital: "", category: ""});
   }
 
   return (
