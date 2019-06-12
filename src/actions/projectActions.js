@@ -110,7 +110,9 @@ export const createProject = (projectData) => {
       .then(resp => resp.json())
       .then(data => {
         dispatch( {type: "ADD_PROJECT", payload: data} );
-
+      })
+  }
+}
 export const completeProject = (id) => {
   return (dispatch) => {
     return fetch(PROJECTS_ENDPOINT+"/complete",{
