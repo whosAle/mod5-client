@@ -77,7 +77,11 @@ class App extends Component {
           <Route exact path="/profile" render={() => <Profile user={this.props.currentUser} currentProjects={this.workingProjects()}/>} />
           <Route exact path="/about" component={About} />
           <Route exact path="/projects/new" render={() => <ProjectForm user={this.props.currentUser}/>} />
-          <Route path="/projects/:id" render={() => <ProjectShow project={this.props.projects.find(proj => proj.id === this.props.match.params.id)}/>} />
+          <Route exact path="/projects/:id" render={(props) => {
+            debugger;
+            return <ProjectShow project={this.props.projects.find(proj => proj.id == props.match.params.id)}/>
+
+          }} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/signup" component={Signup}/>
         </Switch>
@@ -124,4 +128,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {fetchProjects, autoLogin} )(App);
-// export default connect(mapStateToProps)(withRouter(App));
+// export default connect(mapStateToProps, {fetchProjects, autoLogin})(withRouter(App));

@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 const ProjectShow = (props) => {
   console.log("profile", props);
-  const { project } = props.project;
+  const { project } = props;
 
   return (
     <div>
-      <h2>{project.Title}</h2>
+      <h2>{project.title}</h2>
       <div id="project-deets">
         <span>Category: {project.category}</span>
         <span>Capital: {project.capital}</span>
@@ -16,7 +16,7 @@ const ProjectShow = (props) => {
       <p>Location: {project.location}</p>
       <p>{project.description}</p>
 
-      <p>Posted By: {project.user.id}</p>
+      <p>Posted By: {project.user_id}</p>
       <button>Back</button>
       <button>{project.doer_id ? "Complete Project" : "Take On Project"}</button>
 
@@ -25,5 +25,7 @@ const ProjectShow = (props) => {
   );
 
 }
+
+
 
 export default ProjectShow
