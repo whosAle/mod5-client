@@ -25,6 +25,9 @@ export default function usersReducer(state=[], action) {
     case "COMPLETE_PROJECT":
       newState = state.map(proj => proj.id === action.payload.id ? action.payload : proj)
       return newState;
+    case "CONTRIBUTE_PROJECT":
+      newState = state.map(proj => proj.id === action.payload.project.id ? action.payload.project : proj)
+      return newState;
     default:
       return state;
   }

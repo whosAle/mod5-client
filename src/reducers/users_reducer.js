@@ -13,6 +13,9 @@ export default function usersReducer(state={}, action) {
       console.log("logging out!");
       localStorage.setItem("token", "");
       return {};
+    case "CONTRIBUTE_PROJECT":
+      console.log("contriubted user:", action.payload.user);
+      return action.payload.user;
     default:
       return state;
   }
