@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ProjectShow = (props) => {
   console.log("profile", props);
   const { project } = props;
+
+  // TODO: allow a user to get this page without going through the app.
+  // useEffect(() => {
+  //
+  // }, [project]);
 
   return (
     <div>
