@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import ProjectList from './ProjectList';
 
-const Explore = (props) => {
+const Profile = (props) => {
   console.log("profile", props);
 
   return (
@@ -19,4 +19,4 @@ const Explore = (props) => {
 
 }
 
-export default Explore
+export default Profile

@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import {takeProject, completeProject} from '../actions/projectActions';
+
 
 // TODO: MAKE A SEPARATE CARD/COMPONENT FOR CURRENT USER PROJECTS VS NON
 // TODO: there is abug that if there is a doer_id it will still allow you to take the project / overide the d_id
@@ -24,6 +26,7 @@ const Project = (props) => {
             <a>See Admin Details</a>
             </>
           }
+          <button onClick={() => null}> See More Info! </button>
         </div>
       );
   } else {
@@ -48,6 +51,8 @@ const Project = (props) => {
           <a onClick={() => props.takeProject(project.id, currentUser.id)}>Take On Project!</a>
           </>
         }
+        <Link to={`/projects/${project.id}`} activeClassName="active">See MOre Info!</Link>
+        <button onClick={() => props.history.push("/projects/"+project.id)}> See More Info! </button>
       </div>
     )
 
