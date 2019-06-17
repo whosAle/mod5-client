@@ -1,5 +1,6 @@
 const backendEndpoint = "http://localhost:3000/api/v1/graphql";
 const PROJECTS_ENDPOINT = "http://localhost:3000/api/v1/projects";
+const TRANSACTIONS_ENDPOINT = "http://localhost:3000/api/v1/transactions";
 
 export const fetchProjects = () => {
   return dispatch => {
@@ -53,6 +54,7 @@ export const fetchProjects = () => {
 }
 
 export const takeProject = (project_id, doer_id) => {
+  const token = localStorage.getItem("token");
   const query = `
   mutation {
     takeProject(id:${project_id}, doer_id: ${doer_id}) {
@@ -84,7 +86,8 @@ export const takeProject = (project_id, doer_id) => {
     {
       method: 'PATCH',
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: token
       },
       body: JSON.stringify( {id: project_id, doer_id: doer_id} )
     })
@@ -98,12 +101,14 @@ export const takeProject = (project_id, doer_id) => {
 }
 
 export const createProject = (projectData) => {
+  const token = localStorage.getItem("token");
   return dispatch => {
     return fetch(PROJECTS_ENDPOINT,
     {
       method: 'POST',
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: token
       },
       body: JSON.stringify( projectData )
     })
@@ -115,17 +120,41 @@ export const createProject = (projectData) => {
 }
 
 export const completeProject = (id) => {
+  const token = localStorage.getItem("token");
   return (dispatch) => {
     return fetch(PROJECTS_ENDPOINT+"/complete",{
       method: 'PATCH',
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: token
       },
       body: JSON.stringify({project_id: id})
     })
       .then(resp => resp.json())
       .then((data) => {
         dispatch( {type: "COMPLETE_PROJECT", payload: data} );
+      })
+  }
+}
+
+export const contributeCapital = (amount, projectId, userId) => {
+  const token = localStorage.getItem("token");
+  return (dispatch) => {
+    return fetch(TRANSACTIONS_ENDPOINT+"/contribute",{
+      method: 'POST',
+      headers:{
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
+      body: JSON.stringify({amount: amount, user_id: userId, project_id: projectId})
+    })
+      .then(resp => resp.json())
+      .then((data) => {
+        debugger
+        if (!data.error) {
+          dispatch( {type: "CONTRIBUTE_PROJECT", payload: data} );
+        }
+        // dispatch( {type: "COMPLETE_PROJECT", payload: data} );
       })
   }
 }
