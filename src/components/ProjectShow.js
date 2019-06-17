@@ -7,7 +7,7 @@ const ProjectShow = (props) => {
   console.log("project", props);
   const { project, user } = props;
 
-  const [contribute, setContribute] = useState(true);
+  const [contribute, setContribute] = useState({active: false, amount: 0});
 
 
   // TODO: allow a user to get this page without going through the app.
@@ -20,6 +20,11 @@ const ProjectShow = (props) => {
     debugger;
     props.contributeCapital(event.target.contribution.value, project.id, user.id);
     event.target.reset();
+  }
+
+  const handleAmountChange = (event) => {
+    debugger;
+    setContribute({...contribute, amount: Number(event.target.value)});
   }
 
   return (
@@ -42,7 +47,7 @@ const ProjectShow = (props) => {
         <>
         <form onSubmit={handleContributionSubmit}>
         <label name="contribution">Enter Amount!</label>
-        <input type="number" name="contribution" placeholder="20"/>
+        <input type="number" name="contribution" placeholder="20" min="0" max={user.capital} onChange={handleAmountChange}/>
         <input type="submit" value="Submit" />
         </form>
         </>
