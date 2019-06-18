@@ -2,7 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+
 import {takeProject, completeProject} from '../actions/projectActions';
+
+
 
 
 // TODO: MAKE A SEPARATE CARD/COMPONENT FOR CURRENT USER PROJECTS VS NON
@@ -59,20 +67,46 @@ const Project = (props) => {
   }
 }
 
+const useStyles = makeStyles(theme => ({
+  card: {
+    maxWidth: 200,
+    margin: theme.spacing(1),
+  },
+
+}));
+
+const ProjectCard = (props) => {
+  const { project, currentUser } = props;
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.card}>
+       <CardContent>
+       <h3>project {project.title}</h3>
+       <h4>Posted By: {project.user_id}</h4>
+       <p>Capital: {project.base_capital}</p>
+       {project.completed ? <p>Status: Completed!</p> :
+         project.inprogress ? <p>Status: In Progress</p> :
+         <>
+         <p>Status: Available</p>
+         <a>See Admin Details</a>
+         </>
+       }
+       </CardContent>
+      <CardActions>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
+  );
+
+
+}
+
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user
   };
 }
 
-export default connect(mapStateToProps, { takeProject, completeProject })(Project)
-
-
-// t.integer "user_id"
-// t.integer "base_capital"
-// t.string "location"
-// t.string "title"
-// t.string "description"
-// t.string "category"
-// t.boolean "completed"
-// t.boolean "inprogress"
+export default connect(mapStateToProps, { takeProject, completeProject })(ProjectCard)
+// export default connect(mapStateToProps, { takeProject, completeProject })(Project)
