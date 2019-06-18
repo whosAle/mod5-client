@@ -1,11 +1,28 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Lock from '@material-ui/icons/Lock';
 
 
 import {loginUser} from '../actions/userActions';
 
-
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing(2),
+  },
+}));
 
 const Login = (props) => {
 
@@ -19,18 +36,67 @@ const Login = (props) => {
     setFormData({username: "", password: ""});
     props.history.push("/");
   }
+
+
+  const classes = useStyles();
   // debugger;
   return (
     <div id="login">
       LOGIN PAGE!
       <form onSubmit={handleSubmit}>
-        <input name="username" placeholder="enter user name here" onChange={handleChange} value={formData.username}/>
-        <input type="password" name="password" placeholder="enter password here" onChange={handleChange} value={formData.password}/>
-        <input type="submit" name="submit" />
+        <FormControl >
+         <InputLabel htmlFor="username">Username</InputLabel>
+         <Input
+           id="username"
+           name="username"
+           onChange={handleChange}
+           aria-describedby="username-text"
+           value={formData.username}
+           fullWidth={true}
+           required
+           startAdornment={
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+            }
+         />
+         <FormHelperText id="username-text">Enter your username</FormHelperText>
+        </FormControl><br/>
+
+        <FormControl className={classes.formControl}>
+         <InputLabel htmlFor="password">Password</InputLabel>
+         <Input
+           id="password"
+           name="password"
+           onChange={handleChange}
+           aria-describedby="password-text"
+           value={formData.password}
+           fullWidth={true}
+           required
+           type="password"
+           startAdornment={
+            <InputAdornment position="start">
+              <Lock />
+            </InputAdornment>
+            }
+         />
+         <FormHelperText id="password-text">Enter your password</FormHelperText>
+        </FormControl><br/>
+
+        <FormControl className={classes.formControl}>
+         <Button
+           type="submit"
+         >Submit</Button>
+        </FormControl><br/>
+
       </form>
     </div>
   )
 }
+
+// <input name="username" placeholder="enter user name here" onChange={handleChange} value={formData.username}/>
+// <input type="password" name="password" placeholder="enter password here" onChange={handleChange} value={formData.password}/>
+// <input type="submit" name="submit" />
 
 const mapDispatchToProps = (dispatch) => {
   return {

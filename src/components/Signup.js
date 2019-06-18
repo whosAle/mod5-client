@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    // margin: theme.spacing(1),
+    margin: theme.spacing(2),
   },
 }));
 
@@ -57,7 +57,7 @@ const SignUp = (props) => {
            fullWidth={true}
            required
          />
-         <FormHelperText id="username-text">Some important helper text</FormHelperText>
+         <FormHelperText id="username-text">You will use this to sign in</FormHelperText>
         </FormControl><br/>
 
         <FormControl className={classes.formControl}>
@@ -111,7 +111,7 @@ const SignUp = (props) => {
            value={formData.bio}
            fullWidth={true}
            multiline
-           rows="3"
+           rowsMax="3"
          />
          <FormHelperText id="password-text">Tell us about yourself</FormHelperText>
         </FormControl><br/>
