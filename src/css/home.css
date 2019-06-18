@@ -9,6 +9,10 @@
 
 }
 
+#homepage h1{
+  font-weight: 400;
+}
+
 
 .home-grid{
   height: inherit;

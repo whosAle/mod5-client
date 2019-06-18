@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "'Amatic SC', cursive",
     fontSize: "30px",
     margin: theme.spacing(2),
+    fontWight: "20px",
   },
 
 }));
@@ -27,10 +28,10 @@ const Home = () => {
   const displayActionButtons = () => {
     return (
       <>
-      <Zoom in={true}>
+      <Zoom in={true}  timeout={2000}>
         <Button href="/projects/new" color="default" className={classes.button}>Add A Project</Button>
       </Zoom>
-      <Zoom in={true}>
+      <Zoom in={true} timeout={2000}>
         <Button href="/explore" color="default" className={classes.button}>Explore</Button>
       </Zoom>
       </>
