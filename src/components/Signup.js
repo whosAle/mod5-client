@@ -44,7 +44,7 @@ const SignUp = (props) => {
 
   return (
     <div id="login">
-      Sign Up PAGE!
+      <h1>Sign Up PAGE!</h1>
       <form onSubmit={handleSubmit}>
         <FormControl >
          <InputLabel htmlFor="username">Username</InputLabel>
