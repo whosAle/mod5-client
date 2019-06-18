@@ -28,11 +28,11 @@ const Home = () => {
   const displayActionButtons = () => {
     return (
       <>
-      <Zoom in={true}  timeout={2000}>
-        <Button href="/projects/new" color="default" className={classes.button}>Add A Project</Button>
+      <Zoom in={true} timeout={2000}>
+        <Button size="large" href="/projects/new" color="default" className={classes.button}>Add A Project</Button>
       </Zoom>
       <Zoom in={true} timeout={2000}>
-        <Button href="/explore" color="default" className={classes.button}>Explore</Button>
+        <Button size="large" href="/explore" color="default" className={classes.button}>Explore</Button>
       </Zoom>
       </>
     );
