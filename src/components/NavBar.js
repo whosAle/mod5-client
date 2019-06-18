@@ -111,13 +111,13 @@ function MenuAppBar(props) {
               <Button href="/explore" color="default" className={classes.button}>Explore</Button>
               <Button href="/about" color="default" className={classes.button}>About</Button>
 
-            </Grid>
+
 
 
           { localStorage.getItem("token") === "" ?
             (<>
-            <NavLink to="/login" exact>Login</NavLink>
-            <NavLink to="/signup" exact>Sign Up</NavLink>
+            <Button href="/login" color="default" className={classes.button}>Login</Button>
+            <Button href="/signup" color="default" className={classes.button}>Sign Up</Button>
             </>)
             :
             (
@@ -152,6 +152,7 @@ function MenuAppBar(props) {
               </Menu>
             </div>
           )}
+          </Grid>
         </Toolbar>
       </AppBar>
     </div>
