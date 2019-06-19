@@ -76,6 +76,9 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "33%",
     margin: theme.spacing(1),
   },
+  action: {
+    borderTop: "1px solid red",
+  },
 
 }));
 
@@ -99,13 +102,15 @@ const ProjectCard = (props) => {
          project.inprogress ? <p>Status: In Progress</p> :
          <>
          <p>Status: Available</p>
-         <a>See Admin Details</a>
          </>
        }
        <Link component={RouterLink} to={"/users/"+project.user_id}><h4>Posted By: {project.user_id}</h4></Link>
        </CardContent>
-      <CardActions>
+      <CardActions className={classes.action}>
         <Button onClick={handleClick} size="small">Learn More</Button>
+        {currentUser.id === project.user_id ?
+        <Button onClick={handleClick} size="small">Learn More</Button>
+        : null }
       </CardActions>
     </Card>
   );
