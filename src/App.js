@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // import { withRouter } from "react-router";
-
+import Container from '@material-ui/core/Container';
 
 import logo from './logo.svg';
 import './App.css';
@@ -73,6 +73,7 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Container>
           <Route exact path="/explore" render={(props) => <Explore projects={this.props.projects} {...props}/> } />
           <Route exact path="/profile" render={() => <Profile user={this.props.currentUser} currentProjects={this.workingProjects()}/>} />
           <Route exact path="/about" component={About} />
@@ -84,6 +85,7 @@ class App extends Component {
           }} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/signup" component={Signup}/>
+          </Container>
         </Switch>
       </div>
 
