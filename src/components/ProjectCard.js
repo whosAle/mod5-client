@@ -85,7 +85,7 @@ const ProjectCard = (props) => {
     debugger;
     props.history.push("/projects/"+project.id);
   }
-
+// TODO: see admin is showing when not logged in
   return (
     <Card className={classes.card}>
        <CardContent>
