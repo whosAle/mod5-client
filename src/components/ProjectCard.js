@@ -7,8 +7,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
 
 
 import {takeProject, completeProject} from '../actions/projectActions';
@@ -79,6 +81,9 @@ const useStyles = makeStyles(theme => ({
   action: {
     borderTop: "1px solid red",
   },
+  h3: {
+    margin: 0,
+  },
 
 }));
 
@@ -94,8 +99,8 @@ const ProjectCard = (props) => {
 // TODO: see admin is showing when not logged in
   return (
     <Card className={classes.card}>
-       <CardContent>
-       <h3>project {project.title}</h3>
+      <CardContent>
+        <h3 className={classes.h3}>project {project.title}</h3>
        <p>{project.description.substring(0, 150)}...</p>
        <p>Capital: {project.base_capital}</p>
        <p>Location: {project.location}</p>
@@ -106,7 +111,7 @@ const ProjectCard = (props) => {
          </>
        }
        <Link component={RouterLink} to={"/users/"+project.user_id}>Posted By: {project.user_id}</Link>
-       </CardContent>
+      </CardContent>
       <CardActions className={classes.action}>
         <Button onClick={handleClick} size="small">Learn More</Button>
         {currentUser.id === project.user_id ?
