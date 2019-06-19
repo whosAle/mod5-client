@@ -11,9 +11,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
+    marginRight: theme.spacing(3),
   },
   formControl: {
-    marginRight: theme.spacing(3),
+    margin: theme.spacing(1),
     width: "20%",
     minWidth: 120,
   },
@@ -42,7 +43,6 @@ const ProjectFilter = (props) => {
 
   return (
     <div className="" id="">
-      <h1>PROJECT FILTER</h1>
       <form form className={classes.root} autoComplete="off" onSubmit={handleSubmit}>
 
         <FormControl className={classes.formControl}>
