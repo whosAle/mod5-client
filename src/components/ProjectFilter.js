@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 const ProjectFilter = (props) => {
   const classes = useStyles();
 
-  const [filterData, setFilterData] = useState({completion: "", sort: ""});
+  const [filterData, setFilterData] = useState({completion: "all", sort: ""});
   const [searchQuery, setSearchQuery] = useState("");
 
   const { project } = props;
@@ -84,7 +84,13 @@ const ProjectFilter = (props) => {
             displayEmpty
             name="completion"
             className={classes.selectEmpty}
+            startAdornment={
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            }
             input={<Input name="completion" id="Filter-By-Completion" />}
+
           >
             <MenuItem value="all">All</MenuItem>
             <MenuItem value="completed">Completed</MenuItem>
