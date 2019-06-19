@@ -8,7 +8,7 @@ import ProjectCard from './ProjectCard';
 
 const useStyles = makeStyles(theme => ({
   grid: {
-    display: "flex",
+    textAlign: "left",
   },
 
 }));
@@ -22,7 +22,7 @@ const ProjectList = (props) => {
   return (
     <div>
       <h2>Project List! </h2>
-      <Grid container direction="row" justify="space-evenly">
+      <Grid container direction="row" justify="space-evenly" className={classes.grid}>
         {renderProjects()}
       </Grid>
     </div>

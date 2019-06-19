@@ -98,13 +98,14 @@ const ProjectCard = (props) => {
        <h3>project {project.title}</h3>
        <p>{project.description.substring(0, 150)}...</p>
        <p>Capital: {project.base_capital}</p>
+       <p>Location: {project.location}</p>
        {project.completed ? <p>Status: Completed!</p> :
          project.inprogress ? <p>Status: In Progress</p> :
          <>
          <p>Status: Available</p>
          </>
        }
-       <Link component={RouterLink} to={"/users/"+project.user_id}><h4>Posted By: {project.user_id}</h4></Link>
+       <Link component={RouterLink} to={"/users/"+project.user_id}>Posted By: {project.user_id}</Link>
        </CardContent>
       <CardActions className={classes.action}>
         <Button onClick={handleClick} size="small">Learn More</Button>
