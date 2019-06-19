@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   filterControl: {
     margin: theme.spacing(1),
     width: "20%",
-    minWidth: 120,
+    minWidth: 150,
   },
   searchControl: {
     margin: theme.spacing(1),
