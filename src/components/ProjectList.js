@@ -22,7 +22,7 @@ const ProjectList = (props) => {
   return (
     <div>
       <h2>Project List! </h2>
-      <Grid container direction="row" justify="flex-end">
+      <Grid container direction="row" justify="space-evenly">
         {renderProjects()}
       </Grid>
     </div>

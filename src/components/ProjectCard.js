@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom'
+import { Link as RouterLink, withRouter } from 'react-router-dom'
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,6 +8,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+
 
 import {takeProject, completeProject} from '../actions/projectActions';
 
@@ -70,7 +72,8 @@ const Project = (props) => {
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 200,
+    width: "30%",
+    maxWidth: "33%",
     margin: theme.spacing(1),
   },
 
@@ -90,7 +93,7 @@ const ProjectCard = (props) => {
     <Card className={classes.card}>
        <CardContent>
        <h3>project {project.title}</h3>
-       <h4>Posted By: {project.user_id}</h4>
+       <p>{project.description.substring(0, 150)}...</p>
        <p>Capital: {project.base_capital}</p>
        {project.completed ? <p>Status: Completed!</p> :
          project.inprogress ? <p>Status: In Progress</p> :
@@ -99,6 +102,7 @@ const ProjectCard = (props) => {
          <a>See Admin Details</a>
          </>
        }
+       <Link component={RouterLink} to={"/users/"+project.user_id}><h4>Posted By: {project.user_id}</h4></Link>
        </CardContent>
       <CardActions>
         <Button onClick={handleClick} size="small">Learn More</Button>
