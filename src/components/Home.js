@@ -21,18 +21,31 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-const Home = () => {
+const Home = (props) => {
   const classes = useStyles();
   const [typing, setTyping] = useState(true);
+
+  const handleClick = (event, route) => {
+    event.preventDefault();
+    debugger;
+    switch (route) {
+      case "projects":
+        props.history.push("/projects/new");
+        break;
+      case "explore":
+        props.history.push("explore");
+        break;
+    }
+  }
 
   const displayActionButtons = () => {
     return (
       <>
       <Zoom in={true} timeout={2000}>
-        <Button size="large" href="/projects/new" color="default" className={classes.button}>Add A Project</Button>
+        <Button onClick={event => handleClick(event, "projects")} id="projects" size="large" color="default" className={classes.button}>Add A Project</Button>
       </Zoom>
       <Zoom in={true} timeout={2000}>
-        <Button size="large" href="/explore" color="default" className={classes.button}>Explore</Button>
+        <Button onClick={event => handleClick(event, "explore")} id="explore" size="large" color="default" className={classes.button}>Explore</Button>
       </Zoom>
       </>
     );

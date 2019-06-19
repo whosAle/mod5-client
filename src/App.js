@@ -73,13 +73,13 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/explore" render={() => <Explore projects={this.props.projects}/>} />
+          <Route exact path="/explore" render={(props) => <Explore projects={this.props.projects} {...props}/> } />
           <Route exact path="/profile" render={() => <Profile user={this.props.currentUser} currentProjects={this.workingProjects()}/>} />
           <Route exact path="/about" component={About} />
           <Route exact path="/projects/new" render={() => <ProjectForm user={this.props.currentUser}/>} />
           <Route exact path="/projects/:id" render={(props) => {
             debugger;
-            return <ProjectShow project={this.props.projects.find(proj => proj.id == props.match.params.id)}/>
+            return <ProjectShow project={this.props.projects.find(proj => proj.id == props.match.params.id)} {...props}/>
 
           }} />
           <Route exact path="/login" component={Login}/>

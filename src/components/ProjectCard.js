@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom'
+
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -79,6 +80,12 @@ const ProjectCard = (props) => {
   const { project, currentUser } = props;
   const classes = useStyles();
 
+  const handleClick = event => {
+    event.preventDefault();
+    debugger;
+    props.history.push("/projects/"+project.id);
+  }
+
   return (
     <Card className={classes.card}>
        <CardContent>
@@ -94,7 +101,7 @@ const ProjectCard = (props) => {
        }
        </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button onClick={handleClick} size="small">Learn More</Button>
       </CardActions>
     </Card>
   );
@@ -108,5 +115,5 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, { takeProject, completeProject })(ProjectCard)
+export default withRouter(connect(mapStateToProps, { takeProject, completeProject })(ProjectCard))
 // export default connect(mapStateToProps, { takeProject, completeProject })(Project)

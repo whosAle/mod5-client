@@ -7,6 +7,10 @@ const ProjectShow = (props) => {
   console.log("project", props);
   const { project, user } = props;
 
+  if (!props.project) {
+
+  }
+
   const [contribute, setContribute] = useState({active: false, amount: 0});
 
 
