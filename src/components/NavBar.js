@@ -81,7 +81,9 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1),
-    colorSecondary: "#E8AEB7"
+    colorSecondary: "#E8AEB7",
+    containedDefault: "#E8AEB7",
+    containedDefault: "#E8AEB7",
   },
 }));
 
