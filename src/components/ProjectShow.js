@@ -89,7 +89,7 @@ const ProjectShow = (props) => {
           <Chip variant="outlined" className={classes.chip} color="yellow" label={"Status: "+ (project.completed ? "Completed" :
             project.inprogress ? "In Progress" : "Available") } />
           <Chip variant="outlined" className={classes.chip} color="secondary" icon={<BubbleChart />} label={project.base_capital + " Capital"} />
-          <Chip variant="outlined" className={classes.chip} color="primary" icon={<Vignette />} label={"Category" + project.category} />
+          <Chip variant="outlined" className={classes.chip} color="primary" icon={<Vignette />} label={"Category: " + project.category} />
           <Typography paragraph>
             {project.description}
           </Typography>
@@ -110,7 +110,7 @@ const ProjectShow = (props) => {
               <TextField
                 id="contribtion"
                 label="Contribution Amount"
-
+                name="contribution"
                 onChange={handleAmountChange}
                 type="number"
                 className={classes.textField}
