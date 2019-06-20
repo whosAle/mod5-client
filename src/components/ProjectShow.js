@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import {contributeCapital} from '../actions/projectActions';
+import {contributeCapital, completeProject, takeProject} from '../actions/projectActions';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -64,17 +64,23 @@ const ProjectShow = (props) => {
 
   const handleContributionSubmit = (event) => {
     event.preventDefault();
-    debugger;
     props.contributeCapital(event.target.contribution.value, project.id, user.id);
     event.target.reset();
   }
 
-  const handleAmountChange = (event) => {
-    debugger;
-    setContribute({...contribute, amount: Number(event.target.value)});
-  }
+  const handleAmountChange = (event) => setContribute({...contribute, amount: Number(event.target.value)});
 
   const handleContributeClick = event => setContribute({...contribute, active: !contribute.active});
+
+  const handleCompleteClick = (event) => {
+    event.preventDefault();
+    props.completeProject(project.id)
+  }
+
+  const handleTakeOnClick = (event) => {
+    event.preventDefault();
+    props.takeProject(project.id, user.id)
+  }
 
   return (
     <div className={classes.root}>
@@ -104,7 +110,7 @@ const ProjectShow = (props) => {
         <CardContent>
         <Grid container>
           <Grid item xs={6}>
-          <Button fullWidth onClick={handleContributeClick}>{ contribute.active ? "Finsih Up": "Contribute Capital to the cause!"}</Button>
+          <Button fullWidth onClick={handleContributeClick}>{ contribute.active ? "Finsih Up": "Contribute Capital!"}</Button>
           <Collapse in={contribute.active}>
             <form onSubmit={handleContributionSubmit}>
               <TextField
@@ -129,8 +135,10 @@ const ProjectShow = (props) => {
           </Collapse>
           </Grid>
           <Grid item xs={6}>
-            <Button>Back</Button>
-            <Button>{project.doer_id ? "Complete Project" : "Take On Project"}</Button>
+            {project.doer_id ?
+            <Button fullWidth onClick={handleCompleteClick}>Complete Project</Button>
+            :<Button fullWidth onClick={handleTakeOnClick}>Take On Project</Button>
+            }
           </Grid>
         </Grid>
 
@@ -144,4 +152,4 @@ const ProjectShow = (props) => {
 
 
 
-export default connect((state) => ({user: state.user}), {contributeCapital})(ProjectShow)
+export default connect((state) => ({user: state.user}), {contributeCapital, completeProject, takeProject})(ProjectShow)
