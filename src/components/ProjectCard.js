@@ -112,7 +112,7 @@ const ProjectCard = (props) => {
       <CardContent>
         <h3 className={classes.h3}>project {project.title}</h3>
        <p>{project.description.substring(0, 150)}...</p>
-       <p>Capital: {project.base_capital}</p>
+       <p>Capital: {project.total_capital}</p>
        <p>Location: {project.location}</p>
        {project.completed ? <p>Status: Completed!</p> :
          project.inprogress ? <p>Status: In Progress</p> :

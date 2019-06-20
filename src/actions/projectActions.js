@@ -139,6 +139,7 @@ export const completeProject = (id) => {
 }
 
 export const contributeCapital = (amount, projectId, userId) => {
+  debugger;
   const token = localStorage.getItem("token");
   return (dispatch) => {
     return fetch(TRANSACTIONS_ENDPOINT+"/contribute",{
