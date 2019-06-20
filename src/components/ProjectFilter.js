@@ -55,7 +55,7 @@ const ProjectFilter = (props) => {
 
   const handleSearchChange = (event) =>{
     setSearchQuery(event.target.value);
-    // props.onFilterClick(event.target.value);
+    props.onSearchChange(event.target.value);
   }
 
   return (

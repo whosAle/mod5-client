@@ -7,12 +7,17 @@ import AddProjectButton from './AddProjectButton';
 
 const Explore = (props) => {
   const [filterQuery, setFilterQuery] = useState("");
-  const [sortQuery, setSortQuery] = useState({query: ""})
+  const [sortQuery, setSortQuery] = useState({query: ""});
+  const [searchQuery, setSearchQuery] = useState("");
 
   console.log("explore props:", props);
 
   const handleFilterClick = (value) => {
     setFilterQuery(value);
+  }
+
+  const handleSearchChange = (query) => {
+    setSearchQuery(query);
   }
 
   const filterProjects = () => {
@@ -28,6 +33,10 @@ const Explore = (props) => {
       default:
         return props.projects;
     }
+  }
+
+  const searchFilter = (projects) => {
+    return projects.filter(proj => proj.title.toLowerCase().includes(searchQuery.toLowerCase()));
   }
 
   const sortProjects = () => {
@@ -49,9 +58,9 @@ const Explore = (props) => {
     <div>
       <h1>Explore Projects </h1>
 
-      <ProjectFilter onFilterClick={handleFilterClick}/>
+      <ProjectFilter onFilterClick={handleFilterClick} onSearchChange={handleSearchChange}/>
       <AddProjectButton />
-      <ProjectList projects={filterProjects()}/>
+      <ProjectList projects={searchFilter(filterProjects())}/>
     </div>
   );
 }
