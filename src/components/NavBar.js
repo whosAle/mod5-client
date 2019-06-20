@@ -37,11 +37,11 @@ function NavBar(props) {
         { localStorage.getItem("token") === "" ?
         <>
         <NavLink to="/login" exact>Login</NavLink>
-        <NavLink to="/signup" exact>Sign Up</NavLink>
+        <NavLink to="/signup" exact>Join</NavLink>
         </>
         :
         <>
-        <NavLink to="/" onClick={() => props.logOutUser()}>LogOut</NavLink>
+        <NavLink to="/" onClick={() => props.logOutUser()}>Log Out</NavLink>
         <NavLink to="/profile" exact>Profile</NavLink>
         </>
         }
@@ -117,7 +117,7 @@ function MenuAppBar(props) {
           { localStorage.getItem("token") === "" ?
             (<>
             <Button href="/login" color="default" className={classes.button}>Login</Button>
-            <Button href="/signup" color="default" className={classes.button}>Sign Up</Button>
+            <Button href="/signup" color="default" className={classes.button}>Join</Button>
             </>)
             :
             (
@@ -147,7 +147,7 @@ function MenuAppBar(props) {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}><NavLink to="/profile" exact>Profile</NavLink></MenuItem>
-                <MenuItem onClick={handleClose}><NavLink to="/" onClick={() => props.logOutUser()}>LogOut</NavLink>
+                <MenuItem onClick={handleClose}><NavLink to="/" onClick={() => props.logOutUser()}>Log Out</NavLink>
 </MenuItem>
               </Menu>
             </div>

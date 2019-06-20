@@ -30,7 +30,8 @@ const Home = (props) => {
     debugger;
     switch (route) {
       case "projects":
-        props.history.push("/projects/new");
+        props.history.push("/project/new");
+        // props.history.push("/projects/new");
         break;
       case "explore":
         props.history.push("explore");

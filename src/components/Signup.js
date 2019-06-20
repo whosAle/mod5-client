@@ -7,13 +7,13 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
+import Typography from '@material-ui/core/Typography';
 
 import {signUpUser} from '../actions/userActions';
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+  root: {
+    margin: theme.spacing(4),
   },
   formControl: {
     margin: theme.spacing(2),
@@ -43,10 +43,12 @@ const SignUp = (props) => {
   const classes = useStyles();
 
   return (
-    <div id="login">
-      <h1>Sign Up PAGE!</h1>
-      <form onSubmit={handleSubmit}>
-        <FormControl >
+    <div id="sign-up" className={classes.root}>
+      <Typography variant="h5">
+        Sign Up
+      </Typography>
+      <form onSubmit={handleSubmit} >
+        <FormControl fullWidth className={classes.formControl}>
          <InputLabel htmlFor="username">Username</InputLabel>
          <Input
            id="username"
@@ -60,7 +62,7 @@ const SignUp = (props) => {
          <FormHelperText id="username-text">You will use this to sign in</FormHelperText>
         </FormControl><br/>
 
-        <FormControl className={classes.formControl}>
+        <FormControl fullWidth className={classes.formControl}>
          <InputLabel htmlFor="password">Password</InputLabel>
          <Input
            id="password"
@@ -75,7 +77,7 @@ const SignUp = (props) => {
          <FormHelperText id="password-text">Please use a secure password</FormHelperText>
         </FormControl><br/>
 
-        <FormControl className={classes.formControl}>
+        <FormControl fullWidth className={classes.formControl}>
          <InputLabel htmlFor="first-name">First Name</InputLabel>
          <Input
            id="first-name"
@@ -88,7 +90,7 @@ const SignUp = (props) => {
          />
         </FormControl><br/>
 
-        <FormControl className={classes.formControl}>
+        <FormControl fullWidth className={classes.formControl}>
          <InputLabel htmlFor="last-name">Last Name</InputLabel>
          <Input
            id="last-name"
@@ -101,7 +103,7 @@ const SignUp = (props) => {
          />
         </FormControl><br/>
 
-        <FormControl className={classes.formControl}>
+        <FormControl fullWidth className={classes.formControl}>
          <InputLabel htmlFor="bio">Bio</InputLabel>
          <Input
            id="bio"
@@ -116,7 +118,7 @@ const SignUp = (props) => {
          <FormHelperText id="password-text">Tell us about yourself</FormHelperText>
         </FormControl><br/>
 
-        <FormControl className={classes.formControl}>
+        <FormControl fullWidth className={classes.formControl}>
          <Button
            type="submit"
          >Submit</Button>

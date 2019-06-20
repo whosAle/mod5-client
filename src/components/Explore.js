@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import ProjectList from './ProjectList';
 import ProjectFilter from './ProjectFilter';
-
+import AddProjectButton from './AddProjectButton';
 
 
 const Explore = (props) => {
@@ -45,13 +45,12 @@ const Explore = (props) => {
     }
   }
 
-
-
   return (
     <div>
-      <h1>See All Projects </h1>
+      <h1>Explore Projects </h1>
 
       <ProjectFilter onFilterClick={handleFilterClick}/>
+      <AddProjectButton />
       <ProjectList projects={filterProjects()}/>
     </div>
   );

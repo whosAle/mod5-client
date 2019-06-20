@@ -7,6 +7,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
+import Typography from '@material-ui/core/Typography';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Lock from '@material-ui/icons/Lock';
@@ -15,9 +16,9 @@ import Lock from '@material-ui/icons/Lock';
 import {loginUser} from '../actions/userActions';
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+  root: {
+    width: "50%",
+    margin: "10% auto",
   },
   formControl: {
     margin: theme.spacing(2),
@@ -37,14 +38,15 @@ const Login = (props) => {
     props.history.push("/");
   }
 
-
   const classes = useStyles();
-  // debugger;
+
   return (
-    <div id="login">
-      LOGIN PAGE!
+    <div id="login" className={classes.root}>
+      <Typography variant="h5">
+        LOGIN
+      </Typography>
       <form onSubmit={handleSubmit}>
-        <FormControl >
+        <FormControl fullWidth className={classes.formControl}>
          <InputLabel htmlFor="username">Username</InputLabel>
          <Input
            id="username"
@@ -52,7 +54,6 @@ const Login = (props) => {
            onChange={handleChange}
            aria-describedby="username-text"
            value={formData.username}
-           fullWidth={true}
            required
            startAdornment={
             <InputAdornment position="start">
@@ -63,7 +64,7 @@ const Login = (props) => {
          <FormHelperText id="username-text">Enter your username</FormHelperText>
         </FormControl><br/>
 
-        <FormControl className={classes.formControl}>
+        <FormControl fullWidth className={classes.formControl}>
          <InputLabel htmlFor="password">Password</InputLabel>
          <Input
            id="password"
@@ -71,7 +72,6 @@ const Login = (props) => {
            onChange={handleChange}
            aria-describedby="password-text"
            value={formData.password}
-           fullWidth={true}
            required
            type="password"
            startAdornment={
