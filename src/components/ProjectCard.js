@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
   },
   action: {
-    borderTop: "1px solid red",
+    borderTop: "1px solid #E8AEB7",
   },
   h3: {
     margin: 0,

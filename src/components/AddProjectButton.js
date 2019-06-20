@@ -14,9 +14,12 @@ const useStyles = makeStyles(theme => ({
   root:{
     display: "flex",
     justifyContent: "flex-end",
+
   },
   button: {
     margin: theme.spacing(1),
+    backgroundColor: "#E8AEB7",
+    // backgroundColor: "#DAF0EE",
   },
 }));
 

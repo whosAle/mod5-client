@@ -65,6 +65,10 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
+  appbar: {
+    backgroundColor: "#94D1BE",
+    // backgroundColor: "#DAF0EE",
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -77,6 +81,7 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1),
+    colorSecondary: "#E8AEB7"
   },
 }));
 
@@ -100,7 +105,7 @@ function MenuAppBar(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.appbar} position="static" color="default">
         <Toolbar>
 
             <Grid container justify="flex-start" direction="row">
@@ -117,7 +122,7 @@ function MenuAppBar(props) {
           { localStorage.getItem("token") === "" ?
             (<>
             <Button href="/login" color="default" className={classes.button}>Login</Button>
-            <Button href="/signup" color="default" className={classes.button}>Join</Button>
+            <Button href="/signup" variant="contained" color="secondary" size="small" className={classes.button}>Join</Button>
             </>)
             :
             (
