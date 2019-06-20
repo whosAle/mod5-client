@@ -96,7 +96,17 @@ const ProjectCard = (props) => {
     debugger;
     props.history.push("/projects/"+project.id);
   }
-// TODO: see admin is showing when not logged in
+
+  const renderAdminDoerText = () => {
+    switch (true) {
+      case currentUser.id === project.user_id:
+        return <Typography variant="body2">Click to update info</Typography>
+      case currentUser.id === project.doer_id:
+        return <Typography variant="body2">Click to update progress</Typography>
+      default:
+        return null;
+    }
+  }
   return (
     <Card className={classes.card}>
       <CardContent>
@@ -113,10 +123,8 @@ const ProjectCard = (props) => {
        <Link component={RouterLink} to={"/users/"+project.user_id}>Posted By: {project.user_id}</Link>
       </CardContent>
       <CardActions className={classes.action}>
-        <Button onClick={handleClick} size="small">Learn More</Button>
-        {currentUser.id === project.user_id ?
-        <Button onClick={handleClick} size="small">Learn More</Button>
-        : null }
+        <Button onClick={handleClick} size="small">More Info</Button>
+        {renderAdminDoerText()}
       </CardActions>
     </Card>
   );

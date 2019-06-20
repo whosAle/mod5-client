@@ -46,21 +46,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ProjectShow = (props) => {
+  // TODO: allow a user to get this page without going through the app.
+  // if (!props.project) {
+  // }
+  // useEffect(() => {
+  //
+  // }, [project]);
   const classes = useStyles();
   console.log("project", props);
   const { project, user } = props;
 
-  if (!props.project) {
-
-  }
-
   const [contribute, setContribute] = useState({active: false, amount: 0});
-
-
-  // TODO: allow a user to get this page without going through the app.
-  // useEffect(() => {
-  //
-  // }, [project]);
 
   const handleContributionSubmit = (event) => {
     event.preventDefault();
@@ -80,6 +76,14 @@ const ProjectShow = (props) => {
   const handleTakeOnClick = (event) => {
     event.preventDefault();
     props.takeProject(project.id, user.id)
+  }
+
+  const renderProjectCTA = () => {
+    if (project.doer_id) {
+      return <Button fullWidth onClick={handleCompleteClick}>Complete Project</Button>;
+    } else {
+      return <Button fullWidth onClick={handleTakeOnClick}>Take On Project</Button>;
+    }
   }
 
   return (
@@ -106,50 +110,48 @@ const ProjectShow = (props) => {
         </CardContent>
       </Card>
 
-      <Card className={classes.card}>
-        <CardContent>
-        <Grid container>
-          <Grid item xs={6}>
-          <Button fullWidth onClick={handleContributeClick}>{ contribute.active ? "Finsih Up": "Contribute Capital!"}</Button>
-          <Collapse in={contribute.active}>
-            <form onSubmit={handleContributionSubmit}>
-              <TextField
-                id="contribtion"
-                label="Contribution Amount"
-                name="contribution"
-                onChange={handleAmountChange}
-                type="number"
-                className={classes.textField}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                inputProps={{
-                  min: "0",
-                  max: `${user.capital}`
-                }}
-                fullWidth
-                margin="normal"
-              />
-            <Button type="submit" size="large" fullWidth>Contribute!</Button>
-            </form>
-          </Collapse>
+      {project.completed ? null :
+        <Card className={classes.card}>
+          <CardContent>
+          <Grid container>
+            <Grid item xs={6}>
+            <Button fullWidth onClick={handleContributeClick}>{ contribute.active ? "Finsih Up": "Contribute Capital!"}</Button>
+            <Collapse in={contribute.active}>
+              <form onSubmit={handleContributionSubmit}>
+                <TextField
+                  id="contribtion"
+                  label="Contribution Amount"
+                  name="contribution"
+                  onChange={handleAmountChange}
+                  type="number"
+                  className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  inputProps={{
+                    min: "0",
+                    max: `${user.capital}`
+                  }}
+                  fullWidth
+                  margin="normal"
+                />
+              <Button type="submit" size="large" fullWidth>Contribute!</Button>
+              </form>
+            </Collapse>
+            </Grid>
+            <Grid item xs={6}>
+              {renderProjectCTA()}
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            {project.doer_id ?
-            <Button fullWidth onClick={handleCompleteClick}>Complete Project</Button>
-            :<Button fullWidth onClick={handleTakeOnClick}>Take On Project</Button>
-            }
-          </Grid>
-        </Grid>
 
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      }
     </div>
 
   );
 
 }
-
 
 
 export default connect((state) => ({user: state.user}), {contributeCapital, completeProject, takeProject})(ProjectShow)
