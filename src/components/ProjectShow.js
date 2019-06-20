@@ -7,12 +7,18 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+import Collapse from '@material-ui/core/Collapse';
+
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
+import FaceIcon from '@material-ui/icons/Face';
 import BubbleChart from '@material-ui/icons/BubbleChart';
+import Vignette from '@material-ui/icons/Vignette';
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,8 +33,14 @@ const useStyles = makeStyles(theme => ({
   h3: {
     marginBottom: theme.spacing(1),
   },
+  card: {
+    margin: theme.spacing(2),
+  },
   chip: {
     margin: theme.spacing(1),
+  },
+  grid: {
+    flexGrow: 1,
   },
 
 }));
@@ -62,43 +74,66 @@ const ProjectShow = (props) => {
     setContribute({...contribute, amount: Number(event.target.value)});
   }
 
+  const handleContributeClick = event => setContribute({...contribute, active: !contribute.active});
+
   return (
     <div className={classes.root}>
-      <Card >
+      <Card className={classes.card}>
         <CardContent>
-        <Typography variant="h3">
-          {project.title}
-        </Typography>
-        <Typography color="textSecondary">
-          Location: {project.location}
-        </Typography>
-        <Chip variant="outlined" className={classes.chip} color="yellow" label={"Status: "+project.category} />
-        <Chip variant="outlined" className={classes.chip} color="secondary" icon={<BubbleChart />} label={project.total_capital} />
-        <Chip variant="outlined" className={classes.chip} color="primary" avatar={<Avatar>Category</Avatar>} label={project.category} />
-        <Typography paragraph>
-          {project.description}
-        </Typography>
-        <div id="project-deets">
-          <span>Category: {project.category}</span>
-          <span>Capital: {project.total_capital}</span>
-          <span>Status: {project.completed ? "Completed" :
-            project.inprogress ? "In Progress" : "Available"}</span>
-        </div>
+          <Typography variant="h3">
+            {project.title}
+          </Typography>
+          <Typography color="textSecondary">
+            Location: {project.location}
+          </Typography>
+          <Chip variant="outlined" className={classes.chip} color="yellow" label={"Status: "+ (project.completed ? "Completed" :
+            project.inprogress ? "In Progress" : "Available") } />
+          <Chip variant="outlined" className={classes.chip} color="secondary" icon={<BubbleChart />} label={project.base_capital + " Capital"} />
+          <Chip variant="outlined" className={classes.chip} color="primary" icon={<Vignette />} label={"Category" + project.category} />
+          <Typography paragraph>
+            {project.description}
+          </Typography>
 
+          <Typography>
+            <FaceIcon /> Posted By: {project.user_id}
+          </Typography>
+        </CardContent>
+      </Card>
 
-        <p>Posted By: {project.user_id}</p>
-        <button>Back</button>
-        <button>{project.doer_id ? "Complete Project" : "Take On Project"}</button>
-        <button onClick={() => setContribute(!contribute)}>{ contribute ? "Finsih Up": "Contribute Capital to the cause!"}</button>
-        { contribute ?
-          <>
-          <form onSubmit={handleContributionSubmit}>
-          <label name="contribution">Enter Amount!</label>
-          <input type="number" name="contribution" placeholder="20" min="0" max={user.capital} onChange={handleAmountChange}/>
-          <input type="submit" value="Submit" />
-          </form>
-          </>
-        : null }
+      <Card className={classes.card}>
+        <CardContent>
+        <Grid container>
+          <Grid item xs={6}>
+          <Button fullWidth onClick={handleContributeClick}>{ contribute.active ? "Finsih Up": "Contribute Capital to the cause!"}</Button>
+          <Collapse in={contribute.active}>
+            <form onSubmit={handleContributionSubmit}>
+              <TextField
+                id="contribtion"
+                label="Contribution Amount"
+
+                onChange={handleAmountChange}
+                type="number"
+                className={classes.textField}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                inputProps={{
+                  min: "0",
+                  max: `${user.capital}`
+                }}
+                fullWidth
+                margin="normal"
+              />
+            <Button type="submit" size="large" fullWidth>Contribute!</Button>
+            </form>
+          </Collapse>
+          </Grid>
+          <Grid item xs={6}>
+            <Button>Back</Button>
+            <Button>{project.doer_id ? "Complete Project" : "Take On Project"}</Button>
+          </Grid>
+        </Grid>
+
         </CardContent>
       </Card>
     </div>
