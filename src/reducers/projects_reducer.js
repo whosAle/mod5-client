@@ -15,11 +15,7 @@ export default function usersReducer(state=[], action) {
       return action.payload;
     case "TAKE_PROJECT":
       console.log("taking on a project", action.payload);
-      // debugger;
-      // const project = state.find(proj => proj.id === action.payload.id);
-      // project.inprogress = true
-      // project.doer_id = action.payload.doer_id
-      // project = {...project, inprogress: true, doer_id: action.payload.doer_id}
+    
       newState = state.map(proj => proj.id === action.payload.id ? action.payload : proj)
       return newState;
     case "COMPLETE_PROJECT":

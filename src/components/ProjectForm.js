@@ -119,12 +119,5 @@ const ProjectForm = (props) => {
   )
 }
 
-// <input name="title" placeholder="enter title here" onChange={handleChange} value={formData.title}/>
-// <input name="location" placeholder="enter location here" onChange={handleChange} value={formData.location}/>
-// <input name="category" placeholder="enter category here" onChange={handleChange} value={formData.category}/>
-// <input type="number" name="base_capital" placeholder="enter capital value here" onChange={handleChange} value={formData.base_capital}/>
-// <input type="text-area" name="description" placeholder="Describe the event..." onChange={handleChange} value={formData.description}/>
-// <input type="submit" name="submit" />
-
 
 export default connect(null, {createProject})(ProjectForm)
