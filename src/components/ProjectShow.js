@@ -54,13 +54,13 @@ const ProjectShow = (props) => {
   // }, [project]);
   const classes = useStyles();
   console.log("project", props);
-  const { project, user } = props;
+  const { project, currentUser } = props;
 
   const [contribute, setContribute] = useState({active: false, amount: 0});
 
   const handleContributionSubmit = (event) => {
     event.preventDefault();
-    props.contributeCapital(event.target.contribution.value, project.id, user.id);
+    props.contributeCapital(event.target.contribution.value, project.id, currentUser.id);
     event.target.reset();
   }
 
@@ -70,12 +70,12 @@ const ProjectShow = (props) => {
 
   const handleCompleteClick = (event) => {
     event.preventDefault();
-    props.completeProject(project.id)
+    props.completeProject(project.id);
   }
 
   const handleTakeOnClick = (event) => {
     event.preventDefault();
-    props.takeProject(project.id, user.id)
+    props.takeProject(project.id, currentUser.id);
   }
 
   const renderProjectCTA = () => {
@@ -130,7 +130,7 @@ const ProjectShow = (props) => {
                   }}
                   inputProps={{
                     min: "0",
-                    max: `${user.capital}`
+                    max: `${currentUser.capital}`
                   }}
                   fullWidth
                   margin="normal"
@@ -154,4 +154,4 @@ const ProjectShow = (props) => {
 }
 
 
-export default connect((state) => ({user: state.user}), {contributeCapital, completeProject, takeProject})(ProjectShow)
+export default connect((state) => ({currentUser: state.user}), {contributeCapital, completeProject, takeProject})(ProjectShow)

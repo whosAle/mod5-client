@@ -81,6 +81,7 @@ export const takeProject = (project_id, doer_id) => {
   //       dispatch( {type: "TAKE_PROJECT", payload: data.data} );
   //     })
   // }
+  console.log("inside tkae");
   return dispatch => {
     return fetch(PROJECTS_ENDPOINT+`/`+project_id,
     {
