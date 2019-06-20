@@ -15,6 +15,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import About from './components/About';
 import Profile from './components/Profile';
+import UserProfile from './components/UserProfile';
 import Signup from './components/Signup';
 import Explore from './components/Explore';
 import ProjectForm from './components/ProjectForm';
@@ -76,6 +77,7 @@ class App extends Component {
           <Container>
           <Route exact path="/explore" render={(props) => <Explore projects={this.props.projects} {...props}/> } />
           <Route exact path="/profile" render={() => <Profile user={this.props.currentUser} currentProjects={this.workingProjects()}/>} />
+          <Route exact path="/users/:id" render={(props) => <UserProfile userId={props.match.params.id}/> } />
           <Route exact path="/about" component={About} />
           <Route exact path="/project/new" render={() => <ProjectForm user={this.props.currentUser}/>} />
           <Route exact path="/projects/:id" render={(props) => {
