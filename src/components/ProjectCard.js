@@ -120,7 +120,7 @@ const ProjectCard = (props) => {
          <p>Status: Available</p>
          </>
        }
-       <Link component={RouterLink} to={"/users/"+project.user_id}>Posted By: {project.user_id}</Link>
+       <Link component={RouterLink} to={"/users/"+project.user_id}>Posted By: {project.user.name}</Link>
       </CardContent>
       <CardActions className={classes.action}>
         <Button onClick={handleClick} size="small">More Info</Button>
