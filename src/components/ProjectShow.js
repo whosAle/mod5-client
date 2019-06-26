@@ -47,11 +47,25 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectShow = (props) => {
   // TODO: allow a user to get this page without going through the app.
-  // if (!props.project) {
-  // }
   // useEffect(() => {
   //
-  // }, [project]);
+  //   if (!props.project) {
+  //     const token = localStorage.getItem("token");
+  //     fetch(PROJECTS_ENDPOINT+"/"+id,
+  //     {
+  //       headers:{
+  //         'Content-Type': 'application/json',
+  //         Authorization: token
+  //       }
+  //     })
+  //       .then(resp => resp.json())
+  //       .then(data => {
+  //         dispatch( {type: "GET_PROJECT", payload: data} );
+  //       })
+  //
+  //   }
+  // }, []);
+
   const classes = useStyles();
   console.log("project", props);
   const { project, currentUser } = props;
