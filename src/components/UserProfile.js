@@ -16,7 +16,7 @@ const Profile = (props) => {
         setUser(data);
         console.log("done fetch user", user);
       })
-    }, [user]
+    }, []
   );
 
   console.log(user);
