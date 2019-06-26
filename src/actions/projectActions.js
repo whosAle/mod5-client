@@ -81,6 +81,7 @@ export const takeProject = (project_id, doer_id) => {
   //       dispatch( {type: "TAKE_PROJECT", payload: data.data} );
   //     })
   // }
+  console.log("inside tkae");
   return dispatch => {
     return fetch(PROJECTS_ENDPOINT+`/`+project_id,
     {
@@ -138,6 +139,7 @@ export const completeProject = (id) => {
 }
 
 export const contributeCapital = (amount, projectId, userId) => {
+  debugger;
   const token = localStorage.getItem("token");
   return (dispatch) => {
     return fetch(TRANSACTIONS_ENDPOINT+"/contribute",{

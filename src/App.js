@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // import { withRouter } from "react-router";
-
+import Container from '@material-ui/core/Container';
 
 import logo from './logo.svg';
 import './App.css';
@@ -15,6 +15,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import About from './components/About';
 import Profile from './components/Profile';
+import UserProfile from './components/UserProfile';
 import Signup from './components/Signup';
 import Explore from './components/Explore';
 import ProjectForm from './components/ProjectForm';
@@ -73,17 +74,20 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/explore" render={() => <Explore projects={this.props.projects}/>} />
+          <Container>
+          <Route exact path="/explore" render={(props) => <Explore projects={this.props.projects} {...props}/> } />
           <Route exact path="/profile" render={() => <Profile user={this.props.currentUser} currentProjects={this.workingProjects()}/>} />
+          <Route exact path="/users/:id" render={(props) => <UserProfile userId={props.match.params.id}/> } />
           <Route exact path="/about" component={About} />
-          <Route exact path="/projects/new" render={() => <ProjectForm user={this.props.currentUser}/>} />
+          <Route exact path="/project/new" render={() => <ProjectForm user={this.props.currentUser}/>} />
           <Route exact path="/projects/:id" render={(props) => {
             debugger;
-            return <ProjectShow project={this.props.projects.find(proj => proj.id == props.match.params.id)}/>
+            return <ProjectShow project={this.props.projects.find(proj => proj.id == props.match.params.id)} {...props}/>
 
           }} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/signup" component={Signup}/>
+          </Container>
         </Switch>
       </div>
 

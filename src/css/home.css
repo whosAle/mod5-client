@@ -1,6 +1,24 @@
 #homepage {
-  height: 90vh;
+  /* height: 3vh; */
   width: 100vw;
   /* background: url("http://www.namisantaclara.org/wp-content/uploads/2015/09/helping-hand.jpg") no-repeat ; */
-  background-color: chartreuse;
+  /* background-color: chartreuse; */
+  font-size: 30px;
+  font-family: 'Amatic SC', cursive;
+  padding-top: 10%;
+
+}
+
+#homepage h1{
+  font-weight: 400;
+}
+
+
+.home-grid{
+  height: inherit;
+}
+
+.homepage-button{
+  font-family: 'Amatic SC', cursive;
+  font-size: 20px;
 }
