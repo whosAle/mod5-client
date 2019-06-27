@@ -81,7 +81,7 @@ class App extends Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/project/new" render={() => <ProjectForm user={this.props.currentUser}/>} />
           <Route exact path="/projects/:id" render={(props) => {
-            debugger;
+            // debugger;
             return <ProjectShow project={this.props.projects.find(proj => proj.id == props.match.params.id)} {...props}/>
 
           }} />

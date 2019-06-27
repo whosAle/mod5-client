@@ -52,30 +52,34 @@ const ProjectShow = (props) => {
 
   const [contribute, setContribute] = useState({active: false, amount: 0});
   const [project, setProject] = useState({});
-  const { currentUser } = props;
 
   useEffect(() => {
-    debugger;
-    if (!props.project) {
+    if (props.project) {
+      setProject(props.project);
+
+      debugger;
+    } else {
+
+      console.log("in else");
+
       const token = localStorage.getItem("token");
-      fetch(PROJECTS_ENDPOINT+"/",
+      fetch(PROJECTS_ENDPOINT+"/"+props.match.params.id,
       {
         headers:{
           'Content-Type': 'application/json',
           Authorization: token
         }
       })
-        .then(resp => resp.json())
-        .then(data => {
-          setProject(data);
-        })
-
-    } else {
-      setProject(props.project);
+      .then(resp => resp.json())
+      .then(data => {
+        console.log("hahahaha");
+        setProject(data);
+      })
     }
   }, []);
 
   const classes = useStyles();
+  const { currentUser } = props;
 
   const handleContributionSubmit = (event) => {
     event.preventDefault();
@@ -124,7 +128,7 @@ const ProjectShow = (props) => {
           </Typography>
 
           <Typography>
-            <FaceIcon /> Posted By: {project.user.name}
+            <FaceIcon /> Posted By: {project.user ? project.user.name : null}
           </Typography>
         </CardContent>
       </Card>
