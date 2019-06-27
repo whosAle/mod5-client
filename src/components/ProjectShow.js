@@ -45,32 +45,37 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+const PROJECTS_ENDPOINT = "http://localhost:3000/api/v1/projects";
+
 const ProjectShow = (props) => {
   // TODO: allow a user to get this page without going through the app.
-  // useEffect(() => {
-  //
-  //   if (!props.project) {
-  //     const token = localStorage.getItem("token");
-  //     fetch(PROJECTS_ENDPOINT+"/"+id,
-  //     {
-  //       headers:{
-  //         'Content-Type': 'application/json',
-  //         Authorization: token
-  //       }
-  //     })
-  //       .then(resp => resp.json())
-  //       .then(data => {
-  //         dispatch( {type: "GET_PROJECT", payload: data} );
-  //       })
-  //
-  //   }
-  // }, []);
-
-  const classes = useStyles();
-  console.log("project", props);
-  const { project, currentUser } = props;
 
   const [contribute, setContribute] = useState({active: false, amount: 0});
+  const [project, setProject] = useState({});
+  const { currentUser } = props;
+
+  useEffect(() => {
+    debugger;
+    if (!props.project) {
+      const token = localStorage.getItem("token");
+      fetch(PROJECTS_ENDPOINT+"/",
+      {
+        headers:{
+          'Content-Type': 'application/json',
+          Authorization: token
+        }
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          setProject(data);
+        })
+
+    } else {
+      setProject(props.project);
+    }
+  }, []);
+
+  const classes = useStyles();
 
   const handleContributionSubmit = (event) => {
     event.preventDefault();
