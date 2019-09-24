@@ -25,7 +25,7 @@ const About = () => {
       </Typography>
 
       <Typography paragraph variant="body1" className={classes.space}>
-        Our mission is to encourage good deeds throughout our communities by empowering and incentivising everyone to do what they can to ensure a brighter future.
+        Our mission is to encourage good deeds throughout our communities by empowering and incentivze everyone to do what they can to ensure a brighter future.
       </Typography>
 
       <Typography variant="h6">
