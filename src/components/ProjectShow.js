@@ -138,7 +138,7 @@ const ProjectShow = (props) => {
           <CardContent>
           <Grid container>
             <Grid item xs={6}>
-            <Button fullWidth onClick={handleContributeClick}>{ contribute.active ? "Finsih Up": "Contribute Capital!"}</Button>
+            <Button fullWidth onClick={handleContributeClick}>{ contribute.active ? "Finish Up": "Contribute Capital!"}</Button>
             <Collapse in={contribute.active}>
               <form onSubmit={handleContributionSubmit}>
                 <TextField

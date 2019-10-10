@@ -64,7 +64,7 @@ const Project = (props) => {
           <a onClick={() => props.takeProject(project.id, currentUser.id)}>Take On Project!</a>
           </>
         }
-        <Link to={`/projects/${project.id}`} activeClassName="active">See MOre Info!</Link>
+        <Link to={`/projects/${project.id}`} activeClassName="active">See More Info!</Link>
         <button onClick={() => props.history.push("/projects/"+project.id)}> See More Info! </button>
       </div>
     )
